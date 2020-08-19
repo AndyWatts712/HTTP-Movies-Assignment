@@ -31,14 +31,15 @@ export function UpdateMovie() {
 
     const handleUpdate = (e) => {
         e.preventDefault()
-        // axios
-        //     .put(`http://localhost:3000/api/movies/${params.id}`, form)
-        //     .then((res) => {
-        //         console.log(res)
-        //     })
-        //     .catch((err) => console.log(err))
+        axios
+            .put(`http://localhost:5000/api/movies/${params.id}`, form)
+            .then((res) => {
+                setForm(res.data)
+                history.push('/')
+            })
+            .catch((err) => console.log(err))
 
-            history.push('/movies')
+            
     }
 
     return (
