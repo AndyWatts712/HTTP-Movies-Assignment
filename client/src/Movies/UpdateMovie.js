@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
-
+const initialData = [{
+    movie: '',
+    director: '',
+    metascore: '',
+    stars: []
+}]
 
 
 export function UpdateMovie() {
 
-    const [form, setForm] = useState([])
+    const [form, setForm] = useState(initialData)
     const params = useParams()
     const history = useHistory()
 
