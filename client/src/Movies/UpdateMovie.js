@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
 const initialData = [{
-    movie: '',
+    title: '',
     director: '',
     metascore: '',
-    stars: []
 }]
 
 
@@ -21,11 +20,16 @@ export function UpdateMovie() {
             .get(`http://localhost:5000/api/movies/${params.id}`)
             .then((res) => {
                 setForm(res.data)
+                // setForm({
+                //         ...form,
+                //         stars: res.data.stars.toString()
+                //     })
+                console.log('FORM', form)
             })
-            .catch((err) => console.log(err))
-
+                .catch((err) => console.log(err))
+                
         
-    }, [params])
+    }, [])
 
     const handleChange = (e) => {
         setForm({
@@ -36,6 +40,12 @@ export function UpdateMovie() {
 
     const handleUpdate = (e) => {
         e.preventDefault()
+        // let starsArr = form.stars.split(',')
+        // setForm({
+        //     ...form,
+        //     stars: starsArr
+        // })
+        console.log('NEW FORM', form)
         axios
             .put(`http://localhost:5000/api/movies/${params.id}`, form)
             .then((res) => {
@@ -74,6 +84,14 @@ export function UpdateMovie() {
                         onChange={handleChange}
                     />
                 </div>
+                {/* <div>
+                    <input
+                        type='text'
+                        name='stars'
+                        value={form.stars}
+                        onChange={handleChange}
+                    />
+                </div> */}
                 <div>
                     <button>Update</button>
                 </div>

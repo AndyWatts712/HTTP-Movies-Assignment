@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     getMovieList();
-  }, []);
+  }, [movieList]);
 
   return (
     <>
@@ -35,7 +35,7 @@ const App = () => {
       </Route>
 
       <Route path="/movies/:id">
-        <Movie getMovieList={getMovieList} addToSavedList={addToSavedList} />
+        <Movie addToSavedList={addToSavedList} />
       </Route>
 
       <Route path="/update-movie/:id">
@@ -43,7 +43,7 @@ const App = () => {
       </Route>
 
       <Route path="/add-movie">
-        <AddMovie getMovieList={getMovieList}/>
+        <AddMovie />
       </Route>
     </>
   );

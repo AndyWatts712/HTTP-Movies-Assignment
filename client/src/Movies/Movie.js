@@ -24,7 +24,6 @@ function Movie({ addToSavedList, getMovieList }) {
       .delete(`http://localhost:5000/api/movies/${movie.id}`)
       .then((res) => {
         console.log(res)
-        getMovieList()
         
         history.push('/')})
   }
